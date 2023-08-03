@@ -1,4 +1,4 @@
-# TEXFileFormat
+# TEXFileType
 Angel Studios TEX/XTEX File Format for Paint.NET
 
 **Compatibility**: 5.0+
