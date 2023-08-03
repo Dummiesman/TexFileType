@@ -25,6 +25,6 @@ namespace TexFileType
 
         public Version Version => typeof(PluginSupportInfo).Assembly.GetName().Version;
 
-        public Uri WebsiteUri => null;
+        public Uri WebsiteUri => new("https://github.com/Dummiesman/TEXFileFormat");
     }
 }
