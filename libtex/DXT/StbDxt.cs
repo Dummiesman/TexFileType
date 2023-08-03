@@ -4,6 +4,7 @@
 */
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace StbDxtSharp
 {
@@ -40,7 +41,7 @@ namespace StbDxtSharp
 				var quantArray = ch == (1) ? stb__QuantGTab : stb__QuantRBTab;
 				fixed (byte* quant = quantArray)
 				{
-					CRuntime.memset(err, 0, (ulong)(8 * sizeof(int)));
+                    NativeMemory.Fill(err, 8 * sizeof(int), 0);
 					int y;
 					for (y = 0; (y) < (4); ++y)
 					{
@@ -86,7 +87,7 @@ namespace StbDxtSharp
 							for (var y = 0; y < 4; ++y)
 							{
 								if (j + y >= height) break;
-								CRuntime.memcpy(block + y * 16, rgba + width * 4 * (j + y) + i * 4, 16);
+                                NativeMemory.Copy(block + y * 16, rgba + width * 4 * (j + y) + i * 4, 16);
 							}
 
 							stb_compress_dxt_block(p, block, hasAlpha ? 1 : 0, (int)mode);
